@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alina's edvibe lessons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-left:#80b0f0; /* light blue from logo */
+      --bg-right-start:#ff5ea1; /* pink */
+      --bg-right-end:#ffc96b; /* orange */
+      --text:#2f2f2f;
+      --accent:#ff5ea1;
+      --card-bg:rgba(255,255,255,0.9);
+      --glass: rgba(255,255,255,0.6);
+      --radius:18px;
+    }
+    html,body{height:100%;margin:0;font-family:'Quicksand',system-ui,Arial; color:var(--text);}
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(90deg,var(--bg-left) 0 45%, var(--bg-right-start) 45% 65%, var(--bg-right-end) 65% 100%);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:'';
+      position:absolute;
+      right:-10vw;
+      top:-10vh;
+      width:65vh;
+      height:65vh;
+      border-radius:50%;
+      background:var(--bg-left);
+      box-shadow: inset -40px 0 60px rgba(255,255,255,0.08);
+    }
+    .container{width:100%;max-width:1100px;padding:36px;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:center;z-index:2}
+    .logo-card{background:var(--card-bg);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;align-items:center;box-shadow:0 10px 30px rgba(16,24,40,0.12)}
+    .logo-card img{width:220px;height:220px;object-fit:cover;border-radius:12px}
+    h1{font-size:34px;margin:8px 0 4px;font-weight:800;letter-spacing:0.6px}
+    .subtitle{font-weight:600;color:#333;margin:0 0 12px}
+    .description{background:var(--glass);padding:18px;border-radius:12px;line-height:1.45}
+
+    .main-card{background:rgba(255,255,255,0.95);padding:28px;border-radius:22px;box-shadow:0 12px 40px rgba(16,24,40,0.12)}
+    .intro{display:flex;gap:18px;align-items:center}
+    .intro .title{font-size:28px;font-weight:700}
+    .intro p{margin:6px 0 0;color:#444}
+
+    .buttons{display:flex;gap:12px;margin-top:16px}
+    .btn{padding:12px 18px;border-radius:12px;border:none;font-weight:600;cursor:pointer;background:transparent;transition:all .18s ease}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff9a7a);color:white;box-shadow:0 8px 20px rgba(255,94,161,0.18)}
+    .btn.ghost{background:transparent;border:2px solid rgba(47,47,47,0.06)}
+
+    .catalog{margin-top:20px}
+    .catalog-note{margin-bottom:14px;font-size:14px;color:#444;background:rgba(255,255,255,0.6);padding:10px;border-radius:10px}
+    .catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.7));padding:14px;border-radius:12px;border:1px solid rgba(16,24,40,0.04);cursor:pointer;transition:all .2s ease;display:flex;align-items:center;gap:12px;}
+    .card:hover{transform:scale(1.02);}
+    .card img{width:48px;height:48px;border-radius:8px;object-fit:cover;}
+
+    .card h4{margin:0 0 0 0;font-size:18px;}
+    .card-content{display:flex;flex-direction:column;}
+
+    footer{margin-top:26px;text-align:center;color:#333}
+    .tg{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:rgba(0,0,0,0.05);text-decoration:none;color:var(--text);font-weight:600}
+
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;}
+      .logo-card{order:2}
+      .hero::after{display:none}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <aside class="logo-card">
+        <img src="logo.png" alt="Alina's Edvibe Lessons logo">
+        <h1>Alina's edvibe lessons</h1>
+        <p class="subtitle">Готовые уроки английского на Edvibe</p>
+        <div class="description">
+          <strong>Коротко об уроках</strong>
+          <p style="margin-top:8px;">Мои уроки созданы так, чтобы вы могли потратить не более 10 минут на подготовку к занятию, при этом не сомневаясь в качестве материалов: яркие темы, чёткая структура, практические задания и адаптивные уровни. Подойдут всем — от школьников до взрослых: легко масштабируемые, с проверкой ответов и актуальными темами на любой вкус.</p>
+        </div>
+      </aside>
+
+      <main class="main-card">
+        <div class="intro">
+          <div style="flex:1">
+            <div class="title">Почему мои уроки работают?</div>
+            <p>Я соединяю коммуникативный подход с проверенными методическими стратегиями. Каждый урок — мини-модуль: грамматика в контексте, лексика по теме, интерактивные задания и аудирование. Уроки легко внедряются в учебный план вашего ученика или используются как самостоятельный учебный элемент.</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn primary" onclick="showCatalog('songs')">Разбор песен</button>
+          <button class="btn" onclick="showCatalog('themes')">Тематические уроки</button>
+          <button class="btn ghost" onclick="showCatalog('all')">Все уроки</button>
+        </div>
+
+        <section class="catalog" id="catalog">
+          <div id="catalogContent">
+            <p style="color:#666;margin-top:10px">Нажмите на категорию, чтобы открыть каталог уроков.</p>
+          </div>
+        </section>
+
+        <footer>
+          <p>Подписывайтесь в Telegram: <a class="tg" href="https://t.me/edvibe_lessons" target="_blank">@edvibe_lessons</a></p>
+        </footer>
+      </main>
+    </div>
+  </section>
+
+  <script>
+    const tgLink = 'https://t.me/edvibe_lessons';
+
+    const catalogs = {
+      songs: [
+        {title: 'The Neighbourhood - Softcore', icon: 'softcore.png'},
+        {title: 'Billie Eilish - Ocean Eyes', icon: 'ocean_eyes.png'}
+      ],
+      themes: [
+        {title: 'Halloween vibes', icon: 'halloween.png'},
+        {title: 'Halloween vibes (ОГЭ)', icon: 'halloween_oge.png'},
+        {title: 'Thanksgiving vibes', icon: 'thanksgiving.png'},
+        {title: "St. Valentine's Day vibes", icon: 'valentine.png'},
+        {title: 'The Harry Potter Universe', icon: 'harrypotter.png'}
+      ],
+      all: []
+    };
+
+    catalogs.all = catalogs.songs.concat(catalogs.themes);
+
+    function showCatalog(key){
+      const container = document.getElementById('catalogContent');
+      const list = catalogs[key];
+      if(!list){container.innerHTML = '<p>Каталог пуст.</p>';return}
+      let html = '<div class="catalog-note">При выборе урока мы перенаправим вас в Telegram-канал, где вы сможете найти урок в поиске по его названию.</div>';
+      html += '<div class="catalog-grid">';
+      list.forEach(item=>{
+        html += `
+          <div class="card" onclick="window.open('${tgLink}','_blank')">
+            <img src="images/${item.icon}" alt="${item.title} icon">
+            <div class="card-content">
+              <h4>${item.title}</h4>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
