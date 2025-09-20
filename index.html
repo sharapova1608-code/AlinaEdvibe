@@ -7,15 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg-left:#80b0f0; /* light blue from logo */
-      --bg-right-start:#ff5ea1; /* pink */
-      --bg-right-end:#ffc96b; /* orange */
+      --bg-left:#80b0f0;
+      --bg-right-start:#ff5ea1;
+      --bg-right-end:#ffc96b;
       --text:#2f2f2f;
-      --accent:#ff5ea1;
+      --accent-gradient: linear-gradient(90deg, #ff5ea1, #ffc96b);
       --card-bg:rgba(255,255,255,0.9);
       --glass: rgba(255,255,255,0.6);
       --radius:18px;
     }
+
     html,body{height:100%;margin:0;font-family:'Quicksand',system-ui,Arial; color:var(--text);}
     .hero{
       min-height:100vh;
@@ -37,34 +38,84 @@
       background:var(--bg-left);
       box-shadow: inset -40px 0 60px rgba(255,255,255,0.08);
     }
+
     .container{width:100%;max-width:1100px;padding:36px;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:center;z-index:2}
-    .logo-card{background:var(--card-bg);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;align-items:center;box-shadow:0 10px 30px rgba(16,24,40,0.12)}
+    .logo-card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      box-shadow:0 10px 30px rgba(16,24,40,0.12);
+    }
+
     .logo-card img{width:220px;height:220px;object-fit:cover;border-radius:12px}
-    h1{font-size:34px;margin:8px 0 4px;font-weight:800;letter-spacing:0.6px}
-    .subtitle{font-weight:600;color:#333;margin:0 0 12px}
-    .description{background:var(--glass);padding:18px;border-radius:12px;line-height:1.45}
+    h1{
+      font-size:34px;
+      margin:8px 0 4px;
+      font-weight:800;
+      letter-spacing:0.6px;
+      text-align:center;
+      background: linear-gradient(270deg, #ff5ea1, #ffc96b, #80b0f0, #ff5ea1);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-text 10s ease infinite;
+    }
+
+    @keyframes gradient-text{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .subtitle{font-weight:600;color:#333;margin:0 0 12px;text-align:center;}
+    .description{background:var(--glass);padding:18px;border-radius:12px;line-height:1.45;font-family:'Quicksand',Arial,sans-serif;}
 
     .main-card{background:rgba(255,255,255,0.95);padding:28px;border-radius:22px;box-shadow:0 12px 40px rgba(16,24,40,0.12)}
     .intro{display:flex;gap:18px;align-items:center}
-    .intro .title{font-size:28px;font-weight:700}
-    .intro p{margin:6px 0 0;color:#444}
+    .intro .title{font-size:28px;font-weight:700;font-family:'Quicksand',Arial,sans-serif;}
+    .intro p{margin:6px 0 0;color:#444;font-family:'Quicksand',Arial,sans-serif;}
 
-    .buttons{display:flex;gap:12px;margin-top:16px}
-    .btn{padding:12px 18px;border-radius:12px;border:none;font-weight:600;cursor:pointer;background:transparent;transition:all .18s ease}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff9a7a);color:white;box-shadow:0 8px 20px rgba(255,94,161,0.18)}
-    .btn.ghost{background:transparent;border:2px solid rgba(47,47,47,0.06)}
+    .buttons{display:flex;gap:16px;margin-top:16px;justify-content:center}
+    .btn{
+      padding:12px 18px;
+      border-radius:12px;
+      border:none;
+      font-weight:600;
+      cursor:pointer;
+      background: var(--accent-gradient);
+      color:white;
+      box-shadow:0 8px 20px rgba(255,94,161,0.18);
+      transition: all .2s ease;
+      font-family:'Quicksand',Arial,sans-serif;
+    }
+    .btn:hover{
+      transform: scale(1.05);
+      box-shadow:0 12px 25px rgba(255,94,161,0.28);
+    }
 
     .catalog{margin-top:20px}
-    .catalog-note{margin-bottom:14px;font-size:14px;color:#444;background:rgba(255,255,255,0.6);padding:10px;border-radius:10px}
+    .catalog-note{margin-bottom:14px;font-size:14px;color:#444;background:rgba(255,255,255,0.6);padding:10px;border-radius:10px;font-family:'Quicksand',Arial,sans-serif;}
     .catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.7));padding:14px;border-radius:12px;border:1px solid rgba(16,24,40,0.04);cursor:pointer;transition:all .2s ease;display:flex;align-items:center;gap:12px;}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.7));
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(16,24,40,0.04);
+      cursor:pointer;
+      transition:all .2s ease;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
     .card:hover{transform:scale(1.02);}
     .card img{width:48px;height:48px;border-radius:8px;object-fit:cover;}
-
-    .card h4{margin:0 0 0 0;font-size:18px;}
+    .card h4{margin:0 0 0 0;font-size:18px;font-family:'Quicksand',Arial,sans-serif;}
     .card-content{display:flex;flex-direction:column;}
 
-    footer{margin-top:26px;text-align:center;color:#333}
+    footer{margin-top:26px;text-align:center;color:#333;font-family:'Quicksand',Arial,sans-serif;}
     .tg{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:rgba(0,0,0,0.05);text-decoration:none;color:var(--text);font-weight:600}
 
     @media (max-width:880px){
@@ -79,7 +130,7 @@
     <div class="container">
       <aside class="logo-card">
         <img src="images/logo.png" alt="Alina's Edvibe Lessons logo">
-        <h1>Alina's edvibe lessons</h1>
+        <h1>Alina's Edvibe lessons</h1>
         <p class="subtitle">Готовые уроки английского на Edvibe</p>
         <div class="description">
           <strong>Коротко об уроках</strong>
@@ -96,9 +147,9 @@
         </div>
 
         <div class="buttons">
-          <button class="btn primary" onclick="showCatalog('songs')">Разбор песен</button>
+          <button class="btn" onclick="showCatalog('songs')">Разбор песен</button>
           <button class="btn" onclick="showCatalog('themes')">Тематические уроки</button>
-          <button class="btn ghost" onclick="showCatalog('all')">Все уроки</button>
+          <button class="btn" onclick="showCatalog('all')">Все уроки</button>
         </div>
 
         <section class="catalog" id="catalog">
@@ -126,7 +177,7 @@
         {title: 'Halloween vibes', icon: 'halloween.png'},
         {title: 'Halloween vibes (ОГЭ)', icon: 'halloween_oge.png'},
         {title: 'Thanksgiving vibes', icon: 'thanksgiving.png'},
-        {title: "St. Valentine's Day vibes", icon: 'valentines.png'},
+        {title: "St. Valentine's Day vibes", icon: 'valentine.png'},
         {title: 'The Harry Potter Universe', icon: 'harrypotter.png'}
       ],
       all: []
